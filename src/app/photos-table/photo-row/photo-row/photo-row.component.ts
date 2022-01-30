@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Photo } from '../../photo.model';
-import { faPen } from '@fortawesome/free-solid-svg-icons';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPen , faTrashAlt , faCheck} from '@fortawesome/free-solid-svg-icons';
 import { PhotosService } from '../../photos.service';
 
 @Component({
@@ -9,16 +8,16 @@ import { PhotosService } from '../../photos.service';
   templateUrl: './photo-row.component.html',
   styleUrls: ['./photo-row.component.scss'],
 })
-export class PhotoRowComponent implements OnInit {
+export class PhotoRowComponent  {
   @Input()
   photo!: Photo;
-  faPen = faPen;
+  faPen = faPen; 
   faTrashAlt = faTrashAlt;
+  faCheck = faCheck;
   newTitle!: string;
   isEditMode: boolean = false;
   constructor(private photosService: PhotosService) {}
 
-  ngOnInit(): void {}
   removePhoto() {
     this.photosService.removePhoto(this.photo);
   }
@@ -28,7 +27,9 @@ export class PhotoRowComponent implements OnInit {
   }
 
   saveTitle() {
-    this.isEditMode = false;
     let title = this.photosService.changePhotoTitle(this.photo, this.newTitle);
+  }
+  changeMode() {
+    this.isEditMode = false;
   }
 }

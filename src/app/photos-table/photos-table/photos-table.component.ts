@@ -37,16 +37,14 @@ export class PhotosTableComponent implements OnInit {
   }
 
   showTable() {
+    if (this.currentPage < this.photosList.length / 10 + 1) {
+      this.fromNumber = this.currentPage * 10;
+      this.toNumber = this.currentPage * 10 + 10;
 
-    this.fromNumber = this.currentPage * 10;
-    this.toNumber = this.currentPage * 10 + 10;
-    
-    if (this.currentPage < this.photosList.length / 10 + 1)
       this.photosToDisplay = this.photosList.slice(
         this.fromNumber,
         this.toNumber
       );
-
- 
+    }
   }
 }

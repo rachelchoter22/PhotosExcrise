@@ -11,7 +11,8 @@
         {{photo.title}}
         </span>
         <span *ngIf="isEditMode">
-        <input type="text" class="title-input" (onmouseleave)="saveTitle()" [(ngModel)]="newTitle">
+        <input type="text" class="title-input" (input)="saveTitle()" [(ngModel)]="newTitle">
+        <fa-icon [icon]="faCheck" (click)="changeMode()"></fa-icon>
         </span>
 
 

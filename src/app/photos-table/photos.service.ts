@@ -31,5 +31,6 @@ export class PhotosService {
   changePhotoTitle(photo: Photo, newTitle: string) {
     let photoToChange = this.photosList.find((x) => x.id == photo.id);
     if (photoToChange) photo.title = newTitle;
+    this.Photos$.next(this.photosList);
   }
 }
