@@ -1,0 +1,30 @@
+<div class="content">
+    <div class="table-headers">
+        <div>Actions</div>
+        <div>Id</div>
+        <div>Title</div>
+        <div>AlbumId</div>
+        <div>Image</div>
+    </div>
+
+    <div *ngIf="photosToDisplay">
+
+        <photo-row *ngFor="let photo of photosToDisplay" [photo]="photo"></photo-row>
+
+    </div>
+    <div class="pageing-buttons">
+
+        <fa-icon [icon]="faChevronLeft" (click)="switchItems(true)" title="previous page"></fa-icon>
+
+        <span class="pages-range">
+            {{ fromNumber }} - {{toNumber}} of {{totalCount}} </span>
+
+        <!-- <label> previous page</label> -->
+
+        <!-- <label>current page  {{currentPage}}</label> -->
+        <!-- <label>       -->
+        <!-- next page</label> -->
+
+        <fa-icon [icon]="faChevronRight" (click)="switchItems(false)" title="next page"></fa-icon>
+    </div>
+</div>

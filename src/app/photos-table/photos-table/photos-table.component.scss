@@ -1,0 +1,25 @@
+.table-headers {
+    display: flex;
+    &>* {
+        width: 20rem;
+        text-align: center;
+        padding: 1rem;
+    }
+    border-bottom: 1px solid gray;
+}
+
+.content {
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    margin: auto;
+}
+
+.pageing-buttons {
+    margin-left: 40rem;
+    display: flex;
+    padding: 1rem;
+}
+
+fa-icon {
+    padding: 0 1rem;
+    cursor: pointer;
+}

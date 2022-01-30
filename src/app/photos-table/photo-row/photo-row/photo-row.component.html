@@ -1,0 +1,26 @@
+<div class="table-row">
+    <div class="actions table-cell">
+        <fa-icon [icon]="faPen" (click)="editPhotoTitle()"></fa-icon>
+        <fa-icon [icon]="faTrashAlt" (click)="removePhoto()"></fa-icon>
+    </div>
+    <div class="photo-id table-cell">{{photo.id}}</div>
+    <div class="photo-title table-cell">
+
+        <span *ngIf="!isEditMode"> 
+
+        {{photo.title}}
+        </span>
+        <span *ngIf="isEditMode">
+        <input type="text" class="title-input" (onmouseleave)="saveTitle()" [(ngModel)]="newTitle">
+        </span>
+
+
+    </div>
+    <div class="photo-id table-cell">{{photo.albumId}}</div>
+    <div class=" table-cell">
+
+        <img [src]="photo.url" class="photo-image">
+    </div>
+
+
+</div>
