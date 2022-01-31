@@ -1,7 +1,7 @@
 <div class="content">
 
     <div class="search-row">
-        <input type="text" [(ngModel)]="searchText">
+        <input type="text" [(ngModel)]="searchText" (keyup.enter)="search()">
         <fa-icon [icon]="faSearch" (click)="search()" title="search"></fa-icon>
     </div>
     <div class="table-headers">

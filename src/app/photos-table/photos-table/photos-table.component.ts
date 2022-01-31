@@ -28,7 +28,8 @@ export class PhotosTableComponent implements OnInit {
   ngOnInit() {
     this.photosService.Photos$.subscribe((photos) => {
       this.photosList = photos;
-      this.totalCount = this.photosList.length - 1;
+      this.totalCount = this.photosList.length;
+      this.currentPage = 1;
       this.showTable();
     });
   }
@@ -36,8 +37,8 @@ export class PhotosTableComponent implements OnInit {
     if (isToPrevPage && this.currentPage == 1) return;
     if (
       this.currentPage ==
-      (this.photosList.length) /
-        Math.min(this.photosList.length, ITEMS_PER_PAGE)
+      (this.totalCount) /
+        Math.min(this.totalCount, ITEMS_PER_PAGE)
     )
       return;
     isToPrevPage ? this.currentPage-- : this.currentPage++;
@@ -48,7 +49,7 @@ export class PhotosTableComponent implements OnInit {
   showTable() {
     this.fromNumber = this.currentPage * ITEMS_PER_PAGE - ITEMS_PER_PAGE;
     this.toNumber =
-      this.currentPage * Math.min(this.photosList.length, ITEMS_PER_PAGE);
+      this.currentPage * Math.min(this.totalCount, ITEMS_PER_PAGE);
 
     this.photosToDisplay = this.photosList.slice(
       this.fromNumber,

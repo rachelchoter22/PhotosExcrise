@@ -8,6 +8,7 @@ import { Photo } from './photo.model';
 export class PhotosService {
   photosList: Photo[] = [];
   Photos$: Subject<Photo[]> = new Subject();
+  srcChanged$: Subject<string> = new Subject();
   constructor(private httpClient: HttpClient) {
     this.httpClient
       .get('https://jsonplaceholder.typicode.com/photos')
@@ -45,5 +46,6 @@ export class PhotosService {
   selectPhoto(photo: Photo) {
     this.photosList.forEach((x) => (x.isSelected = false));
     photo.isSelected = true;
+    this.srcChanged$.next(photo.url);
   }
 }
