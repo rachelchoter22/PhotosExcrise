@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Photo } from '../photo.model';
 import { PhotosService } from '../photos.service';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faChevronLeft,
+  faChevronRight,
+  faSearch,
+} from '@fortawesome/free-solid-svg-icons';
+const ITEMS_PER_PAGE = 10;
 @Component({
   selector: 'photos-table',
   templateUrl: './photos-table.component.html',
@@ -13,10 +17,12 @@ export class PhotosTableComponent implements OnInit {
   photosToDisplay!: Photo[];
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
+  faSearch = faSearch;
   currentPage = 1;
   fromNumber!: number;
   toNumber!: number;
   totalCount!: number;
+  searchText: string = '';
   constructor(private photosService: PhotosService) {}
 
   ngOnInit() {
@@ -27,24 +33,29 @@ export class PhotosTableComponent implements OnInit {
     });
   }
   switchItems(isToPrevPage: boolean) {
-    if (isToPrevPage && this.currentPage > 1) {
-      this.currentPage -= 1;
-      this.showTable();
-    } else {
-      this.currentPage += 1;
-      this.showTable();
-    }
+    if (isToPrevPage && this.currentPage == 1) return;
+    if (
+      this.currentPage ==
+      (this.photosList.length) /
+        Math.min(this.photosList.length, ITEMS_PER_PAGE)
+    )
+      return;
+    isToPrevPage ? this.currentPage-- : this.currentPage++;
+
+    this.showTable();
   }
 
   showTable() {
-    if (this.currentPage < this.photosList.length / 10 + 1) {
-      this.fromNumber = this.currentPage * 10;
-      this.toNumber = this.currentPage * 10 + 10;
+    this.fromNumber = this.currentPage * ITEMS_PER_PAGE - ITEMS_PER_PAGE;
+    this.toNumber =
+      this.currentPage * Math.min(this.photosList.length, ITEMS_PER_PAGE);
 
-      this.photosToDisplay = this.photosList.slice(
-        this.fromNumber,
-        this.toNumber
-      );
-    }
+    this.photosToDisplay = this.photosList.slice(
+      this.fromNumber,
+      this.toNumber
+    );
+  }
+  search() {
+    this.photosService.searchByIdOrTitle(this.searchText);
   }
 }

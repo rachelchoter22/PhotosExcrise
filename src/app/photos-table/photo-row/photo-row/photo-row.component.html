@@ -1,4 +1,4 @@
-<div class="table-row">
+<div class="table-row" (click)="selectPhoto()" [class.selected]="photo.isSelected">
     <div class="actions table-cell">
         <fa-icon [icon]="faPen" (click)="editPhotoTitle()"></fa-icon>
         <fa-icon [icon]="faTrashAlt" (click)="removePhoto()"></fa-icon>

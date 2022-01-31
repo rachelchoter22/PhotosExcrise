@@ -1,4 +1,9 @@
 <div class="content">
+
+    <div class="search-row">
+        <input type="text" [(ngModel)]="searchText">
+        <fa-icon [icon]="faSearch" (click)="search()" title="search"></fa-icon>
+    </div>
     <div class="table-headers">
         <div>Actions</div>
         <div>Id</div>

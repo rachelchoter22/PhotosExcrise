@@ -1,6 +1,9 @@
 .table-row {
     display: flex;
-    padding: .6rem;
+    padding: 0.6rem;
+    &.selected {
+        background-color: aquamarine;
+    }
     .photo-image {
         width: 1rem;
     }
@@ -9,8 +12,9 @@
         text-align: center;
     }
     .title-input {
-        border: none;
-        border-width: 0 0 0 1px;
+        outline: 0;
+        border-width: 0px 0px 0.5px 0px;
+        width: -webkit-fill-available;
     }
     fa-icon {
         padding: 0 1rem;

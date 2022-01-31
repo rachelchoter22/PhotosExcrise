@@ -33,4 +33,17 @@ export class PhotosService {
     if (photoToChange) photo.title = newTitle;
     this.Photos$.next(this.photosList);
   }
+
+  searchByIdOrTitle(searchText: string) {
+    this.Photos$.next(
+      this.photosList.filter(
+        (x) =>
+          x.id.toString().includes(searchText) || x.title.includes(searchText)
+      )
+    );
+  }
+  selectPhoto(photo: Photo) {
+    this.photosList.forEach((x) => (x.isSelected = false));
+    photo.isSelected = true;
+  }
 }

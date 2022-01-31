@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Photo } from '../../photo.model';
-import { faPen , faTrashAlt , faCheck} from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrashAlt, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { PhotosService } from '../../photos.service';
 
 @Component({
@@ -8,10 +8,10 @@ import { PhotosService } from '../../photos.service';
   templateUrl: './photo-row.component.html',
   styleUrls: ['./photo-row.component.scss'],
 })
-export class PhotoRowComponent  {
+export class PhotoRowComponent {
   @Input()
   photo!: Photo;
-  faPen = faPen; 
+  faPen = faPen;
   faTrashAlt = faTrashAlt;
   faCheck = faCheck;
   newTitle!: string;
@@ -31,5 +31,8 @@ export class PhotoRowComponent  {
   }
   changeMode() {
     this.isEditMode = false;
+  }
+  selectPhoto() {
+    this.photosService.selectPhoto(this.photo);
   }
 }
