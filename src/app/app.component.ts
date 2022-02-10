@@ -14,8 +14,8 @@ export class AppComponent {
   ) {}
 
   ngOnInit() {
-    this.photosService.srcChanged$.subscribe((src) => {
-      this.renderer.setStyle(document.body, 'background-image', `url(${src})`);
-    });
+    // this.photosService.srcChanged$.subscribe((src) => {
+    //   this.renderer.setStyle(document.body, 'background-image', `url(${src})`);
+    // });
   }
 }

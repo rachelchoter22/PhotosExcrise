@@ -24,3 +24,17 @@ fa-icon {
     padding: 0 1rem;
     cursor: pointer;
 }
+
+.search-row {
+    input {
+        outline: 0;
+        border-width: 0px 0px 0.5px 0px;
+        width: 15rem;
+        height: 2rem;
+        font-family: monospace;
+        transition: all .5s;
+        &:focus {
+            width: 30rem;
+        }
+    }
+}

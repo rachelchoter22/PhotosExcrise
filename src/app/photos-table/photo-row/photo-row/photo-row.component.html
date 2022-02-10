@@ -7,11 +7,10 @@
     <div class="photo-title table-cell">
 
         <span *ngIf="!isEditMode"> 
-
-        {{photo.title}}
+        <span> {{photo.title}}</span>
         </span>
-        <span *ngIf="isEditMode">
-        <input type="text" class="title-input" (input)="saveTitle()" [(ngModel)]="newTitle">
+        <span *ngIf="isEditMode" class="title-in-edit">
+        <input type="text" (keyup.enter)="changeMode()" class="title-input" (input)="saveTitle()" [(ngModel)]="newTitle">
         <fa-icon [icon]="faCheck" (click)="changeMode()"></fa-icon>
         </span>
 

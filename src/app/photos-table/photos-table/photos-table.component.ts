@@ -5,6 +5,7 @@ import {
   faChevronLeft,
   faChevronRight,
   faSearch,
+  faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 const ITEMS_PER_PAGE = 10;
 @Component({
@@ -18,6 +19,7 @@ export class PhotosTableComponent implements OnInit {
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
   faSearch = faSearch;
+  faPlus = faPlus;
   currentPage = 1;
   fromNumber!: number;
   toNumber!: number;
@@ -37,8 +39,7 @@ export class PhotosTableComponent implements OnInit {
     if (isToPrevPage && this.currentPage == 1) return;
     if (
       this.currentPage ==
-      (this.totalCount) /
-        Math.min(this.totalCount, ITEMS_PER_PAGE)
+      this.totalCount / Math.min(this.totalCount, ITEMS_PER_PAGE)
     )
       return;
     isToPrevPage ? this.currentPage-- : this.currentPage++;
@@ -58,5 +59,8 @@ export class PhotosTableComponent implements OnInit {
   }
   search() {
     this.photosService.searchByIdOrTitle(this.searchText);
+  }
+  addNewPhoto() {
+    // this.
   }
 }

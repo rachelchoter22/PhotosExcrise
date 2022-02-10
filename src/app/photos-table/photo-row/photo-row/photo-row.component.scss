@@ -11,10 +11,13 @@
         width: 20rem;
         text-align: center;
     }
-    .title-input {
-        outline: 0;
-        border-width: 0px 0px 0.5px 0px;
-        width: -webkit-fill-available;
+    .title-in-edit {
+        display: flex;
+        .title-input {
+            outline: 0;
+            border-width: 0px 0px 0.5px 0px;
+            width: -webkit-fill-available;           
+        }
     }
     fa-icon {
         padding: 0 1rem;
